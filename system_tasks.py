@@ -24,9 +24,7 @@ class System_Tasks:
 
     def set_config_file_path(self):
         '''Set the configuration file file path based on the root folder path and config file name.'''
-        root_folder = self.get_root_folder()
-        config_filename = self.get_config_file_name()
-        return rf"{root_folder}/{config_filename}"
+        return rf"{self.get_root_folder()}/{self.get_config_file_name()}"
 
     def set_config_file_all(self):
         '''Set the data from the configuration file.'''
@@ -35,23 +33,29 @@ class System_Tasks:
     def get_config_file_all(self):
         return self.FULL_CONFIG_FILE_DATA
 
+    def get_aws_access_key_id_key(self):
+        return self.AWS_ACCESS_KEY_ID_KEY_NAME
+
     def set_aws_access_key_id(self):
-        aws_access_key_id = self.AWS_ACCESS_KEY_ID_KEY_NAME
-        return self.get_config_file_all()[aws_access_key_id]
+        return self.get_config_file_all()[self.get_aws_access_key_id_key()]
     
     def get_aws_access_key_id(self):
         return self.AWS_ACCESS_KEY_ID
 
+    def get_aws_secret_access_key_name(self):
+        return self.AWS_SECRET_ACCESS_KEY_KEY_NAME
+
     def set_aws_secret_access_key(self):
-        aws_secret_access_key = self.AWS_SECRET_ACCESS_KEY_KEY_NAME
-        return self.get_config_file_all()[aws_secret_access_key]
+        return self.get_config_file_all()[self.get_aws_secret_access_key_name()]
 
     def get_aws_secret_access_key(self):
         return self.AWS_SECRET_ACCESS_KEY
 
+    def get_aws_s3_bucket_name_key(self):
+        return self.AWS_S3_BUCKET_NAME_KEY
+
     def set_s3_bucket_name(self):
-        s3_bucket = self.AWS_S3_BUCKET_NAME_KEY
-        return self.get_config_file_all()[s3_bucket]
+        return self.get_config_file_all()[self.get_aws_s3_bucket_name_key()]
 
     def get_s3_bucket_name(self):
         return self.AWS_S3_BUCKET

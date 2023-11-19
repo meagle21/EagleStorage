@@ -7,14 +7,16 @@ class AWS:
     
     def __init__(self):
         self.system_tasks = System_Tasks() #OBJECT
-        self.SECRET_ACCESS_ID = self.system_tasks.get_aws_secret_access_key() #STRING
-        self.ACCESS_KEY_ID = self.system_tasks.get_aws_access_key_id() #STRING
-        self.BUCKET_NAME = self.system_tasks.get_s3_bucket_name() #STRING
-        self.connection = boto3.client(service_name = "s3", region_name = "us-east-2",
-                                       aws_access_key_id = self.get_access_key_id(), aws_secret_access_key = self.get_secret_access_id()
+        self.SECRET_ACCESS_ID: Str = self.system_tasks.get_aws_secret_access_key() #STRING
+        self.ACCESS_KEY_ID: Str = self.system_tasks.get_aws_access_key_id() #STRING
+        self.BUCKET_NAME: Str = self.system_tasks.get_s3_bucket_name() #STRING
+        self.connection = boto3.client(service_name = "s3", 
+                                       region_name = "us-east-2",
+                                       aws_access_key_id = self.get_access_key_id(), 
+                                       aws_secret_access_key = self.get_secret_access_id()
                                       ) #AWS SESSION WITH S3 BUCKET
-        self.all_objects = self.set_all_objects() #LIST OF DICTIONARIES
-        self.all_object_names_only = self.set_all_object_names() #LIST OF STRINGS
+        self.all_objects: List[dict] = self.set_all_objects() #LIST OF DICTIONARIES
+        self.all_object_names_only: List[Str] = self.set_all_object_names() #LIST OF STRINGS
 
     def get_secret_access_id(self):
         return self.SECRET_ACCESS_ID

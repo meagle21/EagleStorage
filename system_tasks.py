@@ -3,16 +3,16 @@ import os, json
 class System_Tasks:
 
     def __init__(self):
-        self.CONFIG_FILENAME = "config_data.json"
-        self.AWS_ACCESS_KEY_ID_KEY_NAME = "AWS_ACCESS_KEY_ID"
-        self.AWS_SECRET_ACCESS_KEY_KEY_NAME = "AWS_SECRET_ACCESS_KEY"
-        self.AWS_S3_BUCKET_NAME_KEY = "S3_BUCKET"
-        self.ROOT_FOLDER = os.getcwd()
-        self.CONFIG_FILE_PATH = self.set_config_file_path()
-        self.FULL_CONFIG_FILE_DATA = self.set_config_file_all()
-        self.AWS_ACCESS_KEY_ID = self.set_aws_access_key_id()
-        self.AWS_SECRET_ACCESS_KEY = self.set_aws_secret_access_key()
-        self.AWS_S3_BUCKET = self.set_s3_bucket_name()
+        self.CONFIG_FILENAME: Str = "config_data.json"
+        self.AWS_ACCESS_KEY_ID_KEY_NAME: Str = "AWS_ACCESS_KEY_ID"
+        self.AWS_SECRET_ACCESS_KEY_KEY_NAME: Str = "AWS_SECRET_ACCESS_KEY"
+        self.AWS_S3_BUCKET_NAME_KEY: Str = "S3_BUCKET"
+        self.ROOT_FOLDER: Str = os.getcwd()
+        self.CONFIG_FILE_PATH: Str = self.set_config_file_path()
+        self.FULL_CONFIG_FILE_DATA: Str = self.set_config_file_all()
+        self.AWS_ACCESS_KEY_ID: Str = self.set_aws_access_key_id()
+        self.AWS_SECRET_ACCESS_KEY: Str = self.set_aws_secret_access_key()
+        self.AWS_S3_BUCKET: Str = self.set_s3_bucket_name()
 
     def get_root_folder(self):
         '''Get the file path of the root folder of the project.'''

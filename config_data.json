@@ -1,7 +1,7 @@
 [
     {
-        "AWS_ACCESS_KEY_ID" : "AKIASKJIU6PYOWOFJPA6",
-        "AWS_SECRET_ACCESS_KEY" : "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",
-        "S3_BUCKET" : "mannys-stuff" 
+        "AWS_ACCESS_KEY_ID" : "",
+        "AWS_SECRET_ACCESS_KEY" : "",
+        "S3_BUCKET" : "" 
     }
 ]

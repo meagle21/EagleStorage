@@ -7,7 +7,7 @@ class System_Tasks:
         self.DATA_DICT_ACCESS_KEY_KEY = "access_key_key"
         self.S3_BUCKET_NAME_KEY = "s3_bucket_name"
         self.ROOT_FOLDER = os.getcwd()
-        self.ICONS_FOLDER = rf"{self.ROOT_FOLDER}/static"
+        self.ICONS_FOLDER = rf"/static"
         self.CONFIG_FILENAME = self.set_configuration_file()
         self.CONFIG_FILE_PATH = self.set_config_file_path()
         self.FULL_CONFIG_FILE_DATA = self.set_config_file_all()
@@ -128,7 +128,7 @@ class System_Tasks:
         return self.ICONS_FOLDER
 
     def set_available_file_types(self):
-        return os.listdir(self.get_icons_folder_path())
+        return os.listdir(rf"{self.get_root_folder()}/{self.get_icons_folder_path()}")
     
     def get_available_file_types(self):
         return self.AVAILABLE_FILE_TYPES

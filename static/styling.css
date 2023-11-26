@@ -3,3 +3,10 @@ img {
     width: 150px;
     height: 150px;
   }
+
+figcaption {
+  color: black;
+  font-style: bold;
+  padding: 2px;
+  text-align: center;
+}

@@ -1,14 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from aws import AWS
 from system_tasks import System_Tasks
 from tree import ParentNode, ChildNode
 import os
+import sys
 
-html_folder = rf"{os.getcwd()}/UI"
-images_folder = rf"{os.getcwd()}/Icons"
-
-app = Flask(__name__, 
-            template_folder = html_folder)
+app = Flask(__name__)
 
 ### INITIALIZE OBJECTS TO USE CUSTOM METHODS
 AWS_Class, System_Class = AWS(), System_Tasks()
@@ -38,7 +35,14 @@ for parent_node in parent_nodes[:]:
         search_space.append(parent_node)
         readable_search_space.append(parent_node.get_node_name())
 
-@app.route('/')
+@app.route('/', methods = ['GET'])
 def home():
-    return render_template("index.html", 
-                           folder_objects = search_space)
+    file_data = [[data.get_node_name(), System_Class.get_icon_path(data.get_file_type()), data.get_num_children()] for data in search_space]
+    return render_template("index.html", file_info = file_data)
+
+@app.route('/<folder>', methods = ['POST', 'GET'])
+def file_tree_traversal(folder):
+    for parent_node in parent_nodes:
+        if(parent_node.get_node_name()[:-1] == folder):
+            file_data = [[data.get_node_name(), System_Class.get_icon_path(data.get_file_type()), data.get_num_children()] for data in parent_node.get_children()]
+    return render_template("index.html", file_info = file_data)

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/styling.css">
+</head>
+<body>
+<table>
+    <tr> 
+    {% for data in file_info %}
+        <td>
+            <figure  class="clickable">
+                <img src={{data[1]}}></img><figcaption>{{data[0]}} ({{data[2]}})</figcaption>
+            </figure>
+        </td>        
+    {% endfor %}
+    </tr>  
+</table>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/static/utils.js"></script>
+</html>

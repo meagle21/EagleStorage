@@ -40,8 +40,5 @@ for parent_node in parent_nodes[:]:
 
 @app.route('/')
 def home():
-    return render_template("index.html")
-
-@app.route('/test')
-def test():
-    return readable_search_space
+    return render_template("index.html", 
+                           folder_objects = search_space)

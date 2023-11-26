@@ -2,8 +2,6 @@ from flask import Flask, render_template, request
 from aws import AWS
 from system_tasks import System_Tasks
 from tree import ParentNode, ChildNode
-import os
-import sys
 
 app = Flask(__name__)
 

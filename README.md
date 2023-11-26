@@ -11,4 +11,4 @@ This application has only been tested on Windows 10. To run the application you 
   4. Run the run.bat file by clicking on it, this will launch the application on a localhost server, to access the webpage you should CTRL+C and click on the localhost IP address
 Steps 1-3 only need to be done once, step 4 must be done every time to run the application.
 
-<img src="https://github.com/meagle21/EagleStorage/blob/505193d55361f76184e8c046665198705ff772ae/example.png" width="1000" height="600"></img>
+<img src="https://github.com/meagle21/EagleStorage/blob/505193d55361f76184e8c046665198705ff772ae/example.png" width="1200" height="600"></img>

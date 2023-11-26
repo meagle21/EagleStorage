@@ -8,13 +8,14 @@
     <tr> 
     {% for data in file_info %}
         <td>
-            <figure  class="clickable">
-                <img src={{data[1]}}></img><figcaption>{{data[0]}} ({{data[2]}})</figcaption>
+            <figure  class="clickable {{data[4]}}">
+                <img src={{data[1]}}></img><figcaption id={{data[0]}}>{{data[3]}} ({{data[2]}})</figcaption>
             </figure>
         </td>        
     {% endfor %}
     </tr>  
 </table>
+<button onclick="handleTakeToStatsRequest()">Click to View Cloud Storage Stats</button>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="/static/utils.js"></script>

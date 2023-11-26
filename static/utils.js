@@ -10,14 +10,11 @@ function removeLastBackslash() {
 
 function addClickListener() {
     document.addEventListener('DOMContentLoaded', function () {
-        // Get all elements with the "clickable" class
         var clickableElements = document.querySelectorAll('.clickable');
-      
-        // Add click event listener to each element
         clickableElements.forEach(function (element) {
           element.addEventListener('click', function () {
-            var innerText = handleClick(element);
-            var newUrl = '/' + innerText;
+            var id = handleClick(element);
+            var newUrl = '/' + id;
             console.log(newUrl);
             window.location.href = newUrl;
         });
@@ -25,10 +22,22 @@ function addClickListener() {
 
 function handleClick(element) {
     var figcaptionElement = element.querySelector('figcaption');
-    var figcaptionText = figcaptionElement.innerText.split(' ')[0];
+    var figcaptionText = figcaptionElement.id.slice(0, -1);
     return figcaptionText;
 }
 
+function removeNoneInParenthesis(){
+    var elements = document.getElementsByTagName("figcaption");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].innerText = elements[i].innerText.replace("(None)", "");
+        }
+}
+
+function handleTakeToStatsRequest(){
+    window.location.href = '/mannys_cloud_storage_stats'
+}
+
+removeNoneInParenthesis();
 removeLastBackslash();
 addClickListener();
-handleClick(element);
+

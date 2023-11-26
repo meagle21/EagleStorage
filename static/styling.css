@@ -1,12 +1,22 @@
-img {
+.img {
     padding: 5px;
     width: 150px;
     height: 150px;
   }
 
-figcaption {
+.figcaption {
   color: black;
   font-style: bold;
   padding: 2px;
   text-align: center;
+}
+
+.button {
+  padding: 100px 200px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

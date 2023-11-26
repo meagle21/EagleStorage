@@ -11,7 +11,8 @@ app = Flask(__name__)
 AWS_Class, System_Class = AWS(), System_Tasks()
 s3_data = AWS_Class.get_all_objects()
 Stats_Class = Cloud_Stats(s3_data)
-### IN MAIN.PY COMPLETE THE FINAL DATA POINT COLLECTION 
+
+### AHEAD OF THE APPLICATION OPENING COMPLETE THE FINAL DATA POINT COLLECTION 
 parent_nodes, search_space, readable_search_space = [], [], []
 
 for obj in s3_data[:]:
@@ -43,6 +44,8 @@ def file_tree_traversal(variable_path):
     if(variable_path == 'cloud_storage_stats'):
         stats = Stats_Class.get_all_data()
         return render_template("cloud_storage_stats.html")
+    elif(variable_path == 'favicon.ico'):
+        return ''
     for parent_node in parent_nodes:
         if(parent_node.get_node_full_name()[:-1] == variable_path):
             file_data = [[data.get_node_full_name(), System_Class.get_icon_path(data.get_file_type()), data.get_num_children(), data.get_short_name(), data.get_file_type()] for data in parent_node.get_children()]

@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from aws import AWS
 from system_tasks import System_Tasks
 from tree import ParentNode, ChildNode
+from cloud_stats import Cloud_Stats
 import sys
 
 app = Flask(__name__)
@@ -9,7 +10,7 @@ app = Flask(__name__)
 ### INITIALIZE OBJECTS TO USE CUSTOM METHODS
 AWS_Class, System_Class = AWS(), System_Tasks()
 s3_data = AWS_Class.get_all_objects()
-
+Stats_Class = Cloud_Stats(s3_data)
 ### IN MAIN.PY COMPLETE THE FINAL DATA POINT COLLECTION 
 parent_nodes, search_space, readable_search_space = [], [], []
 
@@ -39,7 +40,8 @@ def home():
 
 @app.route('/<path:variable_path>', methods = ['POST', 'GET'])
 def file_tree_traversal(variable_path):
-    if(variable_path == 'mannys_cloud_storage_stats'):
+    if(variable_path == 'cloud_storage_stats'):
+        stats = Stats_Class.get_all_data()
         return render_template("cloud_storage_stats.html")
     for parent_node in parent_nodes:
         if(parent_node.get_node_full_name()[:-1] == variable_path):

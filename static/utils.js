@@ -34,9 +34,17 @@ function removeNoneInParenthesis(){
 }
 
 function handleTakeToStatsRequest(){
-    window.location.href = '/mannys_cloud_storage_stats'
+    window.location.href = '/cloud_storage_stats'
 }
 
+function updateClassToIncludeDroppable(){
+    var elements = document.getElementsByClassName("folder")
+    for (var i = 0; i < elements.length; i ++){
+        elements[i].className = elements[i].className + ' dropArea';
+    }
+}
+
+updateClassToIncludeDroppable()
 removeNoneInParenthesis();
 removeLastBackslash();
 addClickListener();

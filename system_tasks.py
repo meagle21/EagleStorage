@@ -5,16 +5,14 @@ class System_Tasks:
     def __init__(self):
         self.DATA_DICT_SECRET_ACCESS_KEY_KEY = "secret_access_key_key"
         self.DATA_DICT_ACCESS_KEY_KEY = "access_key_key"
-        self.S3_BUCKET_NAME_KEY = "s3_bucket_name"
         self.ROOT_FOLDER = os.getcwd()
-        self.ICONS_FOLDER = rf"/static"
+        self.ICONS_FOLDER = rf"/static/icons"
         self.CONFIG_FILENAME = self.set_configuration_file()
         self.CONFIG_FILE_PATH = self.set_config_file_path()
         self.FULL_CONFIG_FILE_DATA = self.set_config_file_all()
         self.CONFIG_DATA_DICT = self.set_config_data_dict_key_pairs()
         self.AWS_ACCESS_KEY_ID = self.set_aws_access_key_id()
         self.AWS_SECRET_ACCESS_KEY = self.set_aws_secret_access_key()
-        self.AWS_S3_BUCKET = self.set_s3_bucket_name()
         self.AVAILABLE_FILE_TYPES = self.set_available_file_types()
 
     def set_configuration_file(self):
@@ -35,18 +33,13 @@ class System_Tasks:
     
     def get_data_dict_access_key_key(self):
         return self.DATA_DICT_ACCESS_KEY_KEY
-    
-    def get_data_dict_s3_bucket_name(self):
-        return self.S3_BUCKET_NAME_KEY
 
     def set_config_data_dict_key_pairs(self):
         """Set the variables for the configuration data dictionary, this makes errors in config file more dynamic"""
         access_key_key = self.get_data_dict_access_key_key()
         secret_access_key_key = self.get_data_dict_secret_access_key_key()
-        s3_bucket_name = self.get_data_dict_s3_bucket_name()
         template_dict = {access_key_key : "", 
-                         secret_access_key_key : "" , 
-                         s3_bucket_name : ""} 
+                         secret_access_key_key : ""} 
         keys_needed = list(template_dict.keys()) #get the keys that are needed in the configuration file
         config_file = self.get_config_file_all() #read the configuration file in 
         config_file_keys = list(config_file.keys()) #get the keys that are in the configuration file
@@ -58,9 +51,6 @@ class System_Tasks:
             elif("secret_access_key" in lowered_config_key): #look for secret access key
                 template_dict[secret_access_key_key] = config_file[config_key] #set it in the template dictionary
                 keys_needed.remove(secret_access_key_key) #remove from list of keys needed
-            elif("s3" in lowered_config_key): #look for s3 bucket name key
-                template_dict[s3_bucket_name] = config_file[config_key] #if found, set it in the template dictionary
-                keys_needed.remove(s3_bucket_name) #remove from keys needed
         if(len(keys_needed) > 0): #if the list is not empty, meaning a key was not found containing the right keywords
             keys_needed_as_string = "" #variable to store the list of keys needed to string
             for key in keys_needed: #iterate over keys needed
@@ -101,12 +91,6 @@ class System_Tasks:
 
     def get_aws_secret_access_key(self):
         return self.AWS_SECRET_ACCESS_KEY
-
-    def set_s3_bucket_name(self):
-        return self.get_config_data_dict()[self.get_data_dict_s3_bucket_name()]
-
-    def get_s3_bucket_name(self):
-        return self.AWS_S3_BUCKET
 
     def get_aws_file_type(self, file_name):
         file_extension = os.path.splitext(file_name)[1].replace(".", "")

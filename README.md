@@ -1,1 +1,3 @@
-# EmanuelsCloudStorage
+# EagleStorage
+
+## What is it?
